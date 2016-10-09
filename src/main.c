@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/09 18:26:35 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/09 19:45:59 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,26 @@ int	main(void)
 {
 	t_list	*line_lst;
 	int		nb_ant;
+	int		len_l;
+	int		i;
 
 	if (!(line_lst = get_anthill()))
 		return (1);
-	nb_ant = check_nbant(line_lst);
+	len_l = ft_lstcount(line_lst);
+	if ((nb_ant = check_nbant(line_lst)) <= 0)
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
 	ft_printf("nb_ant :%d\n", nb_ant);
-	print_line(line_lst);
+	ft_lstrotate(&line_lst);
+	i = 1;
+	while (i < len_l)
+	{
+		ft_printf("%s\n", ((t_line*)(line_lst->content))->line);
+		ft_lstrotate(&line_lst);
+		i++;
+	}
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_content);
 	return (0);
 }
