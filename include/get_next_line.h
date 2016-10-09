@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/09 18:26:35 by jcazako          ###   ########.fr       */
+/*   Created: 2016/01/27 13:41:06 by jcazako           #+#    #+#             */
+/*   Updated: 2016/01/30 18:42:18 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 2048
 
-static void	del_content(t_line *content, size_t size)
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
+
+typedef struct	s_gnl
 {
-	free(content->line);
-	ft_bzero(content, size);
-	free(content);
-}
+	int			fd;
+	char		*str;
+}				t_gnl;
 
-int	main(void)
-{
-	t_list	*line_lst;
-	int		nb_ant;
+int				get_next_line(const int fd, char **line);
 
-	if (!(line_lst = get_anthill()))
-		return (1);
-	nb_ant = check_nbant(line_lst);
-	ft_printf("nb_ant :%d\n", nb_ant);
-	print_line(line_lst);
-	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_content);
-	return (0);
-}
+#endif
