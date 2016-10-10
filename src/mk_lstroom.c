@@ -41,8 +41,8 @@ t_list		*mk_lstroom(t_list **line_lst)
 	while ((!ch_room_format(data.str) && data.i < (ft_lstcount(*line_lst) - 1))
 		|| (*data.str == '#' && data.i < (ft_lstcount(*line_lst) - 1)))
 	{
-		ft_printf("st: %s\n", data.str);
 		data.conf = deal_com(line_lst, &data.i);
+		data.str = ((t_line*)((*line_lst)->content))->line;
 		if (!(data.tmp = get_room(data.str, data.conf)))
 		{
 			ft_lstdel(&data.r_lst, (void(*)(void*, size_t))del_room);
@@ -50,8 +50,10 @@ t_list		*mk_lstroom(t_list **line_lst)
 		}
 		if (!data.r_lst)
 			ft_lstadd(&data.r_lst, data.tmp);
-		else
+		else if (!diff_room(data.tmp, data.r_lst))
 			ft_lstadd_back(data.r_lst, data.tmp);
+		else
+			ft_lstdel(&data.tmp, (void(*)(void*, size_t))del_room);
 		ft_lstrotate(line_lst);
 		data.str = ((t_line*)((*line_lst)->content))->line;
 		(data.i)++;

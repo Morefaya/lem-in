@@ -59,4 +59,6 @@ void			del_line(t_line *room, size_t size);
 t_list			*mk_lstroom(t_list **line_lst);
 void			print_r_lst(t_list *r_lst);
 int				ch_pipe_format(char *line, t_list *r_lst);
+int			diff_room(t_list *r_new, t_list *r_lst);
+int			diff_pipe(t_list *p_new, t_list *p_lst);
 #endif

@@ -38,13 +38,13 @@ int	main(void)
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 		return (1);
 	}
+	print_r_lst(r_lst);
 	char	*str = ((t_line*)(line_lst->content))->line;
 	ft_printf("%s\n", str);
 	if (ch_pipe_format(str, r_lst))
 		ft_printf("PIPE_FORMAT KO\n");
 	else
 		ft_printf("PIPE_FORMAT OK\n");
-	//print_r_lst(r_lst);
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 	//while (42);
 	return (0);

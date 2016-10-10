@@ -1,7 +1,8 @@
 CC = gcc
 CFLAG = -Wall -Wextra -Werror
 SRC = main.c print_line.c get_anthill.c check_nbant.c strlen_space.c get_room.c \
-ch_room_format.c mk_lstroom.c del_line.c del_room.c print_r_lst.c ch_pipe_format.c
+ch_room_format.c mk_lstroom.c del_line.c del_room.c print_r_lst.c ch_pipe_format.c\
+diff_room.c diff_pipe.c
 SRC_DIR = ./src
 SRC_C = $(patsubst %, $(SRC_DIR)/%, $(SRC))
 OBJ = $(SRC:.c=.o)
