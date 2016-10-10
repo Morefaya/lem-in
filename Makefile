@@ -1,6 +1,6 @@
 CC = gcc
 CFLAG = -Wall -Wextra -Werror
-SRC = main.c print_line.c get_anthill.c check_nbant.c strlen_space.c
+SRC = main.c print_line.c get_anthill.c check_nbant.c strlen_space.c get_room.c
 SRC_DIR = ./src
 SRC_C = $(patsubst %, $(SRC_DIR)/%, $(SRC))
 OBJ = $(SRC:.c=.o)

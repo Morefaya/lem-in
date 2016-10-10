@@ -131,4 +131,5 @@ void				ft_lstdel_range(t_list **lst, int range, \
 		void(del)(void*, size_t));
 void				ft_lstadd_range(t_list **lst, t_list *nouvo, int range);
 void				ft_lstrev(t_list **lst);
+int				ft_maxint(const char *str);
 #endif

@@ -25,6 +25,7 @@ int	main(void)
 	int		nb_ant;
 	int		len_l;
 	int		i;
+	t_list		*lst_r;
 
 	if (!(line_lst = get_anthill()))
 		return (1);
@@ -37,12 +38,17 @@ int	main(void)
 	ft_printf("nb_ant :%d\n", nb_ant);
 	ft_lstrotate(&line_lst);
 	i = 1;
-	while (i < len_l)
+	lst_r = get_room(((t_line*)(line_lst->content))->line, NONE);
+	char	*str = ((t_room*)(lst_r->content))->n;
+	int	x = ((t_room*)(lst_r->content))->x;
+	int	y = ((t_room*)(lst_r->content))->y;
+	ft_printf("room: %s\nx: %d\ny: %d\n", str, x, y);
+	/*while (i < len_l)
 	{
 		ft_printf("%s\n", ((t_line*)(line_lst->content))->line);
 		ft_lstrotate(&line_lst);
 		i++;
-	}
+	}*/
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_content);
 	return (0);
 }

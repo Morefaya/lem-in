@@ -18,6 +18,7 @@
 
 # define START 01
 # define END 02
+# define NONE 00
 
 typedef struct	s_line
 {
@@ -42,5 +43,5 @@ void	print_line(t_list *line_lst);
 t_list	*get_anthill(void);
 int		check_nbant(t_list *lst);
 int		strlen_space(char *str);
-
+t_list		*get_room(char *line, int cmd);
 #endif
