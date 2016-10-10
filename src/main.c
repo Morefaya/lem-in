@@ -38,6 +38,10 @@ int	main(void)
 	ft_printf("nb_ant :%d\n", nb_ant);
 	ft_lstrotate(&line_lst);
 	i = 1;
+	if (ch_room_format(((t_line*)(line_lst->content))->line))
+		ft_printf("FORMAT KO\n");
+	else
+		ft_printf("FORMAT OK\n");	
 	lst_r = get_room(((t_line*)(line_lst->content))->line, NONE);
 	char	*str = ((t_room*)(lst_r->content))->n;
 	int	x = ((t_room*)(lst_r->content))->x;

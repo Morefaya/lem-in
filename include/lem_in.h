@@ -44,4 +44,5 @@ t_list	*get_anthill(void);
 int		check_nbant(t_list *lst);
 int		strlen_space(char *str);
 t_list		*get_room(char *line, int cmd);
+int		ch_room_format(char *line);
 #endif
