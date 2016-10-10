@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/09 20:28:50 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/10 20:30:04 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,24 @@ typedef struct	s_pipe
 	char		*n_2;
 }				t_pipe;
 
-void	print_line(t_list *line_lst);
-t_list	*get_anthill(void);
-int		check_nbant(t_list *lst);
-int		strlen_space(char *str);
-t_list		*get_room(char *line, int cmd);
-int		ch_room_format(char *line);
+typedef struct	s_mk_lstr
+{
+	char		*str;
+	int			i;
+	t_list		*r_lst;
+	t_list		*tmp;
+	int			conf;
+}				t_mk_lstr;
+
+void			print_line(t_list *line_lst);
+t_list			*get_anthill(void);
+int				check_nbant(t_list *lst);
+int				strlen_space(char *str);
+t_list			*get_room(char *line, int cmd);
+int				ch_room_format(char *line);
+void			del_room(t_room *room, size_t size);
+void			del_line(t_line *room, size_t size);
+t_list			*mk_lstroom(t_list **line_lst);
+void			print_r_lst(t_list *r_lst);
+int				ch_pipe_format(char *line, t_list *r_lst);
 #endif

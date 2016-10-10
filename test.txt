@@ -1,0 +1,13 @@
+67
+salle_1 5 6
+salle_2 34 78
+#panda panda
+salle_3 10 97
+##start
+salle_4 0 0
+salle_5 87 23
+##end
+salle_6 53 76
+salle_1-salle_2
+salle_1-salle_3
+salle_2-salle_3

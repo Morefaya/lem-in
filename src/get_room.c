@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 20:00:17 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/09 20:54:21 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/10 18:40:21 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,14 @@ static int	get_name(char *line, t_room *room)
 	while (line[i + j] && !ft_strchr(" \t", line[i + j]))
 		j++;
 	room->n = ft_strsub(line, i, j);
-	//ft_printf("get_name :%s\n", room->n);
 	return (i + j);
 }
 
 static int	get_coord(char *line, t_room *room, int index)	
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
-	//ft_printf("get_coor :%s\n", line + index);
 	if (ft_maxint(line + index))
 	{
 		free(room->n);
@@ -70,7 +68,7 @@ t_list		*get_room(char *line, int cmd)
 {
 	t_list	*r_link;
 	t_room	content;
-	int	index;
+	int		index;
 
 	bzero_room(&content);
 	r_link = NULL;
@@ -89,7 +87,5 @@ t_list		*get_room(char *line, int cmd)
 		bzero_room(&content);
 		return (NULL);
 	}
-	//ft_printf("GT_NAME :%s\nx :%d\ny :%d\n", content.n, content.x, content.y);
-	//ft_printf("GT_NA_2 :%s\nx :%d\ny :%d\n", ((t_room*)(r_link->content))->n, ((t_room*)(r_link->content))->x, ((t_room*)(r_link->content))->y);
 	return (r_link);
 }
