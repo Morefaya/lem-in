@@ -10,6 +10,7 @@ salle_5 87 23
 salle_6 53 76
 salle_1 66 66
 salle_7 77 77
-salle_1-salle_2
-salle_1-salle_3
+salle_7-salle_2
+salle_1-salle_4
 salle_2-salle_3
+salle_5-salle_7

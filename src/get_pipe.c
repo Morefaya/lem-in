@@ -9,7 +9,7 @@ static int	get_name_1(char *line, t_pipe *pipe)
 	j = 0;
 	while (line[i] && ft_strchr(" \t", line[i]))
 		i++;
-	while (line[i + j] && ft_strchr(" \t", line[i + j]))
+	while (line[i + j] && !ft_strchr(" \t-", line[i + j]))
 		j++;
 	if (!(pipe->n_1 = ft_strsub(line, i, j)))
 		return (-1);
@@ -27,7 +27,7 @@ static int	get_name_2(char *line, t_pipe *pipe, int i)
 		i++;
 	while (line[i] && ft_strchr(" \t", line[i]))
 		i++;
-	while (line[i + j] && ft_strchr(" \t", line[i + j]))
+	while (line[i + j] && !ft_strchr(" \t-", line[i + j]))
 		j++;
 	if (!(pipe->n_2 = ft_strsub(line, i, j)))
 		return (-1);
@@ -47,6 +47,11 @@ t_list		*get_pipe(char *line)
 		free(content.n_1);
 		return (NULL);
 	}
-	
-	
+	if (!(p_lst = ft_lstnew(&content, sizeof(content))))
+	{
+		free(content.n_1);
+		free(content.n_2);
+		return (NULL);
+	}
+	return (p_lst);
 }

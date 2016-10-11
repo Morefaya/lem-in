@@ -61,4 +61,8 @@ void			print_r_lst(t_list *r_lst);
 int				ch_pipe_format(char *line, t_list *r_lst);
 int			diff_room(t_list *r_new, t_list *r_lst);
 int			diff_pipe(t_list *p_new, t_list *p_lst);
+t_list			*get_pipe(char *line);
+t_list			*mk_lstpipe(t_list **line_lst, t_list *r_lst);
+void			del_pipe(t_pipe *pipe, size_t content);
+void			print_p_lst(t_list *p_lst);
 #endif

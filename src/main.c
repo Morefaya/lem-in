@@ -19,7 +19,7 @@ int	main(void)
 	int		len_l;
 	int		i;
 	t_list	*r_lst;
-	//t_list	*p_list;
+	t_list	*p_lst;
 
 	if (!(line_lst = get_anthill()))
 		return (1);
@@ -39,12 +39,15 @@ int	main(void)
 		return (1);
 	}
 	print_r_lst(r_lst);
-	char	*str = ((t_line*)(line_lst->content))->line;
-	ft_printf("%s\n", str);
-	if (ch_pipe_format(str, r_lst))
-		ft_printf("PIPE_FORMAT KO\n");
-	else
-		ft_printf("PIPE_FORMAT OK\n");
+	if (!(p_lst = mk_lstpipe(&line_lst, r_lst)))
+	{
+		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
+		ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
+		return (1);
+	}
+	print_p_lst(p_lst);
+	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
+	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 	//while (42);
 	return (0);

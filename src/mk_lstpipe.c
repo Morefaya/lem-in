@@ -12,16 +12,18 @@ static void	deal_com(t_list **line_lst, int *i)
 	}
 }
 
-t_list		*mk_lstroom(t_list **line_lst)
+t_list		*mk_lstpipe(t_list **line_lst, t_list *r_lst)
 {
 	t_mk_lstr	data;
 
 	data.i = 0;
 	data.r_lst = NULL;
 	data.str = ((t_line*)((*line_lst)->content))->line;
-	while ((!ch_pipe_format(data.str) && data.i < (ft_lstcount(*line_lst) - 1))
+	while ((!ch_pipe_format(data.str, r_lst)
+		&& data.i < (ft_lstcount(*line_lst) - 1))
 		|| (*data.str == '#' && data.i < (ft_lstcount(*line_lst) - 1)))
 	{
+		//ft_printf("ON RENTRE?\n");
 		deal_com(line_lst, &data.i);
 		data.str = ((t_line*)((*line_lst)->content))->line;
 		if (!(data.tmp = get_pipe(data.str)))

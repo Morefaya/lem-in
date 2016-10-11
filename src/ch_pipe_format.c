@@ -16,6 +16,8 @@ static int	check_name(char *name, t_list *r_lst)
 {
 	char	*str;
 
+	if (!r_lst)
+		return (0);
 	while (r_lst)
 	{
 		str = ((t_room*)(r_lst->content))->n;
@@ -64,7 +66,7 @@ static int	second_step(char *line, t_list *r_lst, int *i, int *j)
 	if (check_name(n_1, r_lst))
 	{
 		free(n_1);
-		return (11);
+		return (12);
 	}
 	free(n_1);
 	(*i) += *j;
