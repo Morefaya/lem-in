@@ -48,6 +48,26 @@ typedef struct	s_mk_lstr
 	int			conf;
 }				t_mk_lstr;
 
+typedef struct	s_hill
+{
+	char	*ant;
+	char	**pipe;
+}		t_hill;
+
+typedef struct	s_ant
+{
+	char	*n;
+}		t_ant;
+
+typedef struct	s_hill
+{
+	char	*name;
+	t_ant	*ant;
+	s_hill	*c_xion;
+}		t_hill;
+
+
+
 void			print_line(t_list *line_lst);
 t_list			*get_anthill(void);
 int				check_nbant(t_list *lst);
