@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/10 20:56:52 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/12 18:26:50 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(void)
 	int		i;
 	t_list	*r_lst;
 	t_list	*p_lst;
+	t_list	*h_lst;
+	t_list	*a_lst;
 
 	if (!(line_lst = get_anthill()))
 		return (1);
@@ -38,17 +40,24 @@ int	main(void)
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 		return (1);
 	}
-	print_r_lst(r_lst);
+	//print_r_lst(r_lst);
 	if (!(p_lst = mk_lstpipe(&line_lst, r_lst)))
 	{
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 		ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 		return (1);
 	}
-	print_p_lst(p_lst);
+	//print_p_lst(p_lst);
+	h_lst = mk_anthill(&r_lst);
+	print_hill(h_lst);
+	a_lst = get_antlst(nb_ant, h_lst);
+	print_ant(a_lst);
+	init_ant(a_lst, h_lst);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
+	ft_lstdel(&h_lst, (void(*)(void*, size_t))del_hill);
+	ft_lstdel(&a_lst, (void(*)(void*, size_t))del_ant);
 	//while (42);
 	return (0);
 }

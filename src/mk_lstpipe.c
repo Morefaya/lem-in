@@ -23,7 +23,6 @@ t_list		*mk_lstpipe(t_list **line_lst, t_list *r_lst)
 		&& data.i < (ft_lstcount(*line_lst) - 1))
 		|| (*data.str == '#' && data.i < (ft_lstcount(*line_lst) - 1)))
 	{
-		//ft_printf("ON RENTRE?\n");
 		deal_com(line_lst, &data.i);
 		data.str = ((t_line*)((*line_lst)->content))->line;
 		if (!(data.tmp = get_pipe(data.str)))
