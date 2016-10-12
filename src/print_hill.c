@@ -20,6 +20,7 @@ void	print_hill(t_list *hill)
 	{
 		str = ((t_hill*)(hill->content))->n;
 		ft_printf("hill :%s\n", str);
+		print_xion(((t_hill*)(hill->content))->xion);
 		hill = hill->next;
 	}
 }

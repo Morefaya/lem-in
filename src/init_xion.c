@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem_in.h"
+
 static t_list	*get_addr_hill(char *n, t_list *h_lst)
 {
 	char	*name;
@@ -19,7 +21,7 @@ static t_list	*get_addr_hill(char *n, t_list *h_lst)
 		name = ((t_hill*)(h_lst->content))->n;
 		if (!ft_strcmp(n, name))
 			return (h_lst);
-		h_lst = h_lst->next
+		h_lst = h_lst->next;
 	}
 	return (NULL);
 }
@@ -38,7 +40,7 @@ static void		add_xion(t_list **h_lst, char *n)
 		ft_lstadd_back(((t_hill*)((*h_lst)->content))->xion, tmp);
 }
 
-static t_list	*get_xion(t_list **h_lst, t_list *p_lst)
+static void	get_xion(t_list **h_lst, t_list *p_lst)
 {
 	char	*n;
 	char	*n_1;
@@ -52,10 +54,24 @@ static t_list	*get_xion(t_list **h_lst, t_list *p_lst)
 		if (!ft_strcmp(n, n_1) || !ft_strcmp(n, n_2))
 		{
 			if (!ft_strcmp(n, n_1))
-
+				add_xion(h_lst, n_2);
 			else if (!ft_strcmp(n, n_2))
-
+				add_xion(h_lst, n_1);
 		}
 		p_lst = p_lst->next;
+	}
+}
+
+void		init_xion(t_list **h_lst, t_list *p_lst)
+{
+	int	len;
+	int	i;
+
+	i = 0;
+	len = ft_lstcount(*h_lst);
+	while (i++ < len)
+	{
+		get_xion(h_lst, p_lst);
+		ft_lstrotate(h_lst);
 	}
 }

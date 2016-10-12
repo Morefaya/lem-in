@@ -89,4 +89,7 @@ t_list				*get_antlst(int nb_ant, t_list *h_lst);
 void				del_ant(t_ant *ant, size_t ct);
 void				del_hill(t_hill *hill, size_t ct);
 void				print_ant(t_list *a_lst);
+void				init_ant(t_list *a_lst, t_list *h_lst);
+void				init_xion(t_list **h_lst, t_list *p_lst);
+void				print_xion(t_list *xion);
 #endif

@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "lem_in.h"
+
 void	init_ant(t_list *a_lst, t_list *h_lst)
 {
 	((t_hill*)(h_lst->content))->a_lst = a_lst;
