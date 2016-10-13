@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/13 18:55:25 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/13 20:32:53 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ void				del_ant(t_ant *ant, size_t ct);
 void				del_hill(t_hill *hill, size_t ct);
 void				print_ant(t_list *a_lst);
 void				init_ant(t_list *a_lst, t_list *h_lst);
-void				init_xion(t_list **h_lst, t_list *p_lst);
-void				print_xion(t_list *xion);
 void				path_finder(t_list *h_lst, t_list **w_lst);
+t_list				*get_addr_hill(char *n, t_list *h_lst);
+void				mk_pipe(t_list *h_lst, t_list *p_lst);
+void				print_tab_addr(t_list **tab);
 #endif

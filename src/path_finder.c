@@ -20,7 +20,7 @@
 void		path_finder(t_list *h_lst, t_list **w_lst)
 {
 	(void)w_lst;
-	ft_printf("PATH :%p\n", ((t_hill*)(h_lst->content))->xion);
+	ft_printf("PATH :%p\n", ((t_hill*)(h_lst->content))->pipe);
 	/*t_list	*tmp;
 	t_xion	content;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/13 19:12:21 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/13 20:36:43 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ int	main(void)
 	//print_ant(a_lst);
 	init_ant(a_lst, h_lst);
 	//init_xion(&h_lst, p_lst);
+	mk_pipe(h_lst, p_lst);
 	print_hill(h_lst);
 	w_lst = NULL;
-	path_finder(h_lst, &w_lst);
+	//path_finder(h_lst, &w_lst);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);

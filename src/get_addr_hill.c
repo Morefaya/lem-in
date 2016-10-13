@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hill.c                                       :+:      :+:    :+:   */
+/*   get_addr_hill.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/12 17:18:42 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/13 20:54:13 by jcazako          ###   ########.fr       */
+/*   Created: 2016/10/13 20:06:07 by jcazako           #+#    #+#             */
+/*   Updated: 2016/10/13 20:06:11 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	print_hill(t_list *hill)
+t_list	*get_addr_hill(char *n, t_list *h_lst)
 {
-	char	*str;
-	t_list	**tmp;
+	char	*name;
 
-	while (hill)
+	while (h_lst)
 	{
-		str = ((t_hill*)(hill->content))->n;
-		tmp = ((t_hill*)(hill->content))->pipe;
-		ft_printf("hill :%s\taddr :%p\n", str, hill);
-		print_tab_addr(tmp);
-		hill = hill->next;
+		name = ((t_hill*)(h_lst->content))->n;
+		if (!ft_strcmp(n, name))
+			return (h_lst);
+		h_lst = h_lst->next;
 	}
+	return (NULL);
 }
