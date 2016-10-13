@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/12 19:08:09 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/13 14:48:24 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct		s_ant
 typedef struct		s_hill
 {
 	char			*n;
+	int				cmd;
 	t_list			*a_lst;
 	t_list			*xion;
 }					t_hill;
@@ -92,4 +93,5 @@ void				print_ant(t_list *a_lst);
 void				init_ant(t_list *a_lst, t_list *h_lst);
 void				init_xion(t_list **h_lst, t_list *p_lst);
 void				print_xion(t_list *xion);
+void				path_finder(t_list *h_lst, t_list **w_lst);
 #endif
