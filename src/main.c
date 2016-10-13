@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/13 17:12:24 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/13 19:12:21 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(void)
 	a_lst = get_antlst(nb_ant, h_lst);
 	//print_ant(a_lst);
 	init_ant(a_lst, h_lst);
-	init_xion(&h_lst, p_lst);
+	//init_xion(&h_lst, p_lst);
 	print_hill(h_lst);
 	w_lst = NULL;
 	path_finder(h_lst, &w_lst);

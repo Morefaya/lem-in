@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/13 14:48:24 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/13 18:55:25 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ typedef struct		s_hill
 	char			*n;
 	int				cmd;
 	t_list			*a_lst;
-	t_list			*xion;
+	t_list			**pipe;
 }					t_hill;
 
-typedef struct		s_xion
+/*typedef struct		s_xion
 {
 	t_list			*pipe;
-}					t_xion;
+}					t_xion;*/
 
 void				print_line(t_list *line_lst);
 t_list				*get_anthill(void);
