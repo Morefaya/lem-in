@@ -3,7 +3,7 @@
 
 
 
-static int	check_way(t_list *w_lst, t_list *xion)
+/*static int	check_way(t_list *w_lst, t_list *xion)
 {
 	t_list	*addr;
 
@@ -15,11 +15,13 @@ static int	check_way(t_list *w_lst, t_list *xion)
 		w_lst = w_lst->next;
 	}
 	return (0);
-}
+}*/
 
 void		path_finder(t_list *h_lst, t_list **w_lst)
 {
-	t_list	*tmp;
+	(void)w_lst;
+	ft_printf("PATH :%p\n", ((t_hill*)(h_lst->content))->xion);
+	/*t_list	*tmp;
 	t_xion	content;
 	int		i;
 	int		len;
@@ -36,14 +38,15 @@ void		path_finder(t_list *h_lst, t_list **w_lst)
 	else
 		ft_lstadd_back(*w_lst, tmp);
 	ft_printf("IN_2\n");
-	/*if (((t_hill*)(h_lst->content))->cmd == END)
+	if (((t_hill*)(h_lst->content))->cmd == END)
 	{
 		ft_printf("END\n");
 		return ;
-	}*/
+	}
 	ft_printf("IN_3\n");
 	i = 0;
-	ft_printf("%p\n", ((t_hill*)(h_lst->content))->xion);
+	ft_printf("pointer :%p\n", ((t_hill*)(h_lst->content))->xion);
+	print_hill(h_lst);
 	len = ft_lstcount(((t_hill*)(h_lst->content))->xion);
 	ft_printf("IN_4\n");
 	//tmp = ((t_hill*)(h_lst->content))->xion;
@@ -63,5 +66,5 @@ void		path_finder(t_list *h_lst, t_list **w_lst)
 			ft_lstrotate(&((t_hill*)(h_lst->content))->xion);
 			i++;
 		}
-	}
+	}*/
 }
