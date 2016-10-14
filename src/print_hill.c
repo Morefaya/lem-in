@@ -19,7 +19,7 @@ void	print_hill(t_list *hill)
 	while (hill)
 	{
 		str = ((t_hill*)(hill->content))->n;
-		ft_printf("hill :%s\n", str);
+		ft_printf("hill :%s\taddr :%p\n", str, hill);
 		print_xion(((t_hill*)(hill->content))->xion);
 		hill = hill->next;
 	}

@@ -15,9 +15,9 @@
 int	main(void)
 {
 	t_list	*line_lst;
-	int		nb_ant;
-	int		len_l;
-	int		i;
+	int	nb_ant;
+	int	len_l;
+	int	i;
 	t_list	*r_lst;
 	t_list	*p_lst;
 	t_list	*h_lst;
@@ -56,7 +56,7 @@ int	main(void)
 	init_xion(&h_lst, p_lst);
 	print_hill(h_lst);
 	w_lst = NULL;
-	path_finder(h_lst, &w_lst);
+	//path_finder(h_lst, &w_lst);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
