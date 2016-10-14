@@ -15,12 +15,24 @@
 void	print_hill(t_list *hill)
 {
 	char	*str;
+	int	cmd;
 
 	while (hill)
 	{
 		str = ((t_hill*)(hill->content))->n;
-		ft_printf("hill :%s\taddr :%p\n", str, hill);
-		print_xion(((t_hill*)(hill->content))->xion);
+		cmd = ((t_hill*)(hill->content))->cmd;
+		ft_printf("hill :%s\taddr :%p\tcmd :%d\n", str, hill, cmd);
+		if (((t_hill*)(hill->content))->xion)
+		{
+			print_xion(((t_hill*)(hill->content))->xion);
+			ft_printf("\n");
+		}
+		if (((t_hill*)(hill->content))->a_lst)
+		{
+			print_ant(((t_hill*)(hill->content))->a_lst);
+			ft_printf("\n");
+		}
+		ft_printf("\n");
 		hill = hill->next;
 	}
 }

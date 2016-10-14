@@ -39,24 +39,6 @@ static void		turn_to_start(t_list **r_lst)
 		ft_lstrotate(r_lst);
 }
 
-/*static t_list	*get_xion(t_list *r_lst, t_lst *p_lst)
-{
-	char	*name;
-	int		ret;
-
-	while (r_lst)
-	{
-		name = ((t_room*)(r_lst->content))->n;
-		if ((ret = check_name(name, p_lst)) == 1)
-		{
-		}
-		else if (ret == 2)
-		{
-		}
-		r_lst = r_lst->next;
-	}
-}*/
-
 static t_list	*get_hill(t_list *r_lst)
 {
 	t_list	*h_link;
@@ -69,6 +51,7 @@ static t_list	*get_hill(t_list *r_lst)
 		content.n = ((t_room*)(r_lst->content))->n;
 		content.a_lst = NULL;
 		content.xion = NULL;
+		content.cmd = ((t_room*)(r_lst->content))->cmd;
 		if (!(tmp = ft_lstnew(&content, sizeof(content))))
 		{
 			ft_lstdel(&h_link, (void(*)(void*, size_t))del_hill);
