@@ -53,17 +53,17 @@ int	main(void)
 	a_lst = get_antlst(nb_ant, h_lst);
 	//print_ant(a_lst);
 	init_ant(a_lst, h_lst);
-	//init_xion(&h_lst, p_lst);
+	init_xion(&h_lst, p_lst);
 	//print_hill(h_lst);
 	w_lst = NULL;
-	//path_finder(h_lst, &w_lst);
-	//print_xion(w_lst);
+	path_finder(h_lst, &w_lst);
+	print_xion(w_lst);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 	ft_lstdel(&h_lst, (void(*)(void*, size_t))del_hill);
 	ft_lstdel(&a_lst, (void(*)(void*, size_t))del_ant);
-	while (42);
+	//while (42);
 	return (0);
 }

@@ -30,14 +30,17 @@ static void		add_xion(t_list **h_lst, char *n)
 {
 	t_list	*tmp;
 	t_xion	content;
+	t_list	*xion;
 
 	content.pipe = get_addr_hill(n, *h_lst);
 	if (!(tmp = ft_lstnew(&content, sizeof(content))))
 		return ;
-	if (!((t_hill*)((*h_lst)->content))->xion)
+	xion = ((t_hill*)((*h_lst)->content))->xion;
+	if (!xion)
 		ft_lstadd(&((t_hill*)((*h_lst)->content))->xion, tmp);
 	else
 		ft_lstadd_back(((t_hill*)((*h_lst)->content))->xion, tmp);
+	
 }
 
 static void	get_xion(t_list **h_lst, t_list *p_lst)

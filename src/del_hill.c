@@ -14,6 +14,7 @@
 
 void	del_hill(t_hill *hill, size_t ct)
 {
+	ft_lstdel(&hill->xion, (void(*)(void*, size_t))del_xion);
 	free(hill);
 	ft_bzero(hill, ct);
 }

@@ -33,18 +33,40 @@ void		path_finder(t_list *h_lst, t_list **w_lst)
 	char	*str;
 	int	nb;
 	t_list	*xion;
-	t_list	*pipe;
+	//t_list	*pipe;
+	t_list	*w;
 	
-	add_way(h_lst, w_lst);
+	if (!*w_lst)
+		add_way(h_lst, w_lst);
 	str = ((t_hill*)(h_lst->content))->n;
 	nb = ((t_hill*)(h_lst->content))->cmd;
 	xion = ((t_hill*)(h_lst->content))->xion;
+	w = ((t_xion*)((*w_lst)->content))->pipe;
 	//ft_printf("%s : %p\tcmd :%d\n", str, h_lst, nb);
-	while (xion)
+	if (((t_hill*)(w->content))->cmd == END)
+		return ;
+	if (nb == END)
+		return ;
+	/*while (xion)
 	{
 		pipe = ((t_xion*)(xion->content))->pipe;
 		if (!check_way(pipe, *w_lst))
+		{
+			ft_printf("recure\n");
+			add_way(pipe, w_lst);
 			path_finder(pipe, w_lst);
+		}
+		w = ((t_xion*)((*w_lst)->content))->pipe;
+		if (((t_hill*)(w->content))->cmd == END)
+			break ;
 		xion = xion->next;
+	}*/
+	while (xion && check_way(((t_xion*)(xion->content))->pipe, *w_lst))
+		xion = xion->next;
+	if (xion)
+	{
+		//ft_printf("recure\n");
+		add_way(((t_xion*)(xion->content))->pipe, w_lst);
+		path_finder(((t_xion*)(xion->content))->pipe, w_lst);
 	}
 }
