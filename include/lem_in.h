@@ -94,4 +94,5 @@ void				init_ant(t_list *a_lst, t_list *h_lst);
 void				init_xion(t_list **h_lst, t_list *p_lst);
 void				print_xion(t_list *xion);
 void				path_finder(t_list *h_lst, t_list **w_lst);
+void				del_xion(t_xion *xion, size_t size);
 #endif
