@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_xion.c                                       :+:      :+:    :+:   */
+/*   xion_cpy.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/15 15:15:24 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/15 15:15:26 by jcazako          ###   ########.fr       */
+/*   Created: 2016/10/15 16:22:36 by jcazako           #+#    #+#             */
+/*   Updated: 2016/10/15 16:36:47 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	print_xion(t_list *xion)
+t_list	*xion_cpy(t_list *xion)
 {
 	t_list	*tmp;
-	char	*name;
+	t_list	*cpy;
+	t_xion	content;
 
+	cpy = NULL;
 	while (xion)
 	{
-		tmp = ((t_xion*)(xion->content))->pipe;
-		name = ((t_hill*)(tmp->content))->n;
-		ft_printf("xion: %s\taddr :%p\n", name, tmp);
+		content.pipe = ((t_xion*)(xion->content))->pipe;
+		if (!(tmp = ft_lstnew(&content, sizeof(content))))
+		{
+			ft_lstdel(&cpy, (void(*)(void*, size_t))del_xion);
+			return (NULL);
+		}
+		if (!cpy)
+			ft_lstadd(&cpy, tmp);
+		else
+			ft_lstadd_back(cpy, tmp);
 		xion = xion->next;
 	}
+	return (cpy);
 }

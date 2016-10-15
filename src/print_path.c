@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_xion.c                                       :+:      :+:    :+:   */
+/*   print_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/15 15:15:24 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/15 15:15:26 by jcazako          ###   ########.fr       */
+/*   Created: 2016/10/15 15:12:28 by jcazako           #+#    #+#             */
+/*   Updated: 2016/10/15 16:39:37 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	print_xion(t_list *xion)
+void	print_path(t_list *path)
 {
-	t_list	*tmp;
-	char	*name;
-
-	while (xion)
+	while (path)
 	{
-		tmp = ((t_xion*)(xion->content))->pipe;
-		name = ((t_hill*)(tmp->content))->n;
-		ft_printf("xion: %s\taddr :%p\n", name, tmp);
-		xion = xion->next;
+		print_xion(((t_xion*)(path->content))->pipe);
+		path = path->next;
+		if (path)
+			ft_printf("\n");
 	}
 }

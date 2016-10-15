@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/13 14:48:24 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/15 17:12:18 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void				print_ant(t_list *a_lst);
 void				init_ant(t_list *a_lst, t_list *h_lst);
 void				init_xion(t_list **h_lst, t_list *p_lst);
 void				print_xion(t_list *xion);
-void				path_finder(t_list *h_lst, t_list **w_lst);
+void				path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst,
+					t_list **as_lst);
 void				del_xion(t_xion *xion, size_t size);
+void				print_path(t_list *path);
+t_list				*xion_cpy(t_list *xion);
 #endif

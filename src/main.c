@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/13 17:12:24 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/15 17:11:45 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(void)
 	t_list	*h_lst;
 	t_list	*a_lst;
 	t_list	*w_lst;
+	t_list	*ph_lst;
+	t_list	*as_lst;
 
 	if (!(line_lst = get_anthill()))
 		return (1);
@@ -56,8 +58,11 @@ int	main(void)
 	init_xion(&h_lst, p_lst);
 	//print_hill(h_lst);
 	w_lst = NULL;
-	path_finder(h_lst, &w_lst);
-	print_xion(w_lst);
+	ph_lst = NULL;
+	as_lst = NULL;
+	path_finder(h_lst, &w_lst, &ph_lst, &as_lst);
+	//print_xion(w_lst);
+	print_path(ph_lst);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
