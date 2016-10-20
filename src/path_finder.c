@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-/*static int	check_way(t_list *pipe, t_list *w_lst)
+static int	check_way(t_list *pipe, t_list *w_lst)
 {
 	t_list	*addr;
 
@@ -13,7 +13,7 @@
 	}
 	return (0);
 }
-*/
+
 static void	add_way(t_list *h_lst, t_list **w_lst)
 {
 	t_list	*tmp;
@@ -28,11 +28,7 @@ static void	add_way(t_list *h_lst, t_list **w_lst)
 		ft_lstadd_back(*w_lst, tmp);
 }
 
-static void	supp_way(t_list	*h_lst, t_list **w_lst)
-{
-	
-}
-/*
+
 static void	add_path(t_list **w_lst, t_list **ph_lst)
 {
 	t_list	*tmp;
@@ -46,7 +42,7 @@ static void	add_path(t_list **w_lst, t_list **ph_lst)
 	else
 		ft_lstadd_back(*ph_lst, tmp);
 }
-
+/*
 void		path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst, t_list **as_lst)
 {
 	char	*str;
@@ -106,22 +102,46 @@ void		path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst, t_list **as_ls
 }*/
 
 
-void		path_finder(t_list *h_lst, t_list **w_lst)
+int		path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst, int i)
 {
 	char	*str;
 	t_list	*xion;
 	t_list	*pipe;
+	t_list	*done;
+	int	ret;
 
+	done = NULL;
+	ret = 0;
 	add_way(h_lst, w_lst);
+	ft_printf("in => stack n_%d\n", i);
+	if (((t_hill*)(h_lst->content))->cmd == END)
+	{
+		ft_printf("end\n");
+		add_path(w_lst, ph_lst);
+		//ft_lstdel_range(w_lst, ft_lstcount(*w_lst), (void(*)(void*, size_t))del_xion);
+		return (1);
+	}
 	str = ((t_hill*)(h_lst->content))->n;
 	xion = ((t_hill*)(h_lst->content))->xion;
 	pipe = ((t_xion*)(xion->content))->pipe;
 	while (xion)
 	{
-		if (xion && check_way(pipe, *w_lst))
-			path_finder(pipe, w_lst);
-		else if (xion && !check_way(pipe, *w_lst))
+		pipe = ((t_xion*)(xion->content))->pipe;
+		if (xion && !check_way(pipe, *w_lst) && !check_way(pipe, done))
+		{
+			add_way(pipe, &done);
+			ret = path_finder(pipe, w_lst, ph_lst, i + 1);
+		}
+		else if ((xion && check_way(pipe, *w_lst)) ||
+			(xion && check_way(pipe, done)))
 			xion = xion->next;
 	}
-	ft_lstdel_addr(w_lst, h_lst, del_xion);
+	if (!xion)
+	{
+		//ft_lstdel(&done, (void(*)(void*, size_t))del_xion);
+		add_path(w_lst, ph_lst);
+	}
+	//ft_lstdel_range(w_lst, ft_lstcount(*w_lst), (void(*)(void*, size_t))del_xion);
+	ft_printf("out <= stack n_%d\n", i);
+	return (0);
 }

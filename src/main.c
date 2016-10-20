@@ -60,9 +60,9 @@ int	main(void)
 	w_lst = NULL;
 	ph_lst = NULL;
 	as_lst = NULL;
-	path_finder(h_lst, &w_lst, &ph_lst, &as_lst);
-	//print_xion(w_lst);
-	print_path(ph_lst);
+	path_finder(h_lst, &w_lst, &ph_lst, 0);
+	print_xion(ph_lst);
+	//print_path(ph_lst);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
