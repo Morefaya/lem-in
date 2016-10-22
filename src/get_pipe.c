@@ -34,12 +34,14 @@ static int	get_name_2(char *line, t_pipe *pipe, int i)
 	return (i + j);
 }
 
-t_list		*get_pipe(char *line)
+t_list		*get_pipe(char *line, t_list *r_lst)
 {
 	t_list	*p_lst;
 	t_pipe	content;
 	int	i;
 
+	if (ch_pipe_format(line, r_lst))
+		return (NULL);
 	if ((i = get_name_1(line, &content)) == -1)
 		return (NULL);
 	else if (get_name_2(line, &content, i) == -1)

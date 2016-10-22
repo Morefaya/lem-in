@@ -70,6 +70,8 @@ t_list		*get_room(char *line, int cmd)
 	t_room	content;
 	int		index;
 
+	if (ch_room_format(line))
+		return (NULL);
 	bzero_room(&content);
 	r_link = NULL;
 	index = get_name(line, &content);

@@ -19,7 +19,7 @@ static int	deal_com(t_list **line_lst, int *i)
 
 	conf = NONE;
 	str = ((t_line*)((*line_lst)->content))->line;
-	if (*str == '#')
+	while (*str == '#')
 	{
 		if (!ft_strcmp("##start", str))
 			conf = START;
@@ -27,8 +27,19 @@ static int	deal_com(t_list **line_lst, int *i)
 			conf = END;
 		(*i)++;
 		ft_lstrotate(line_lst);
+		str = ((t_line*)((*line_lst)->content))->line;
 	}
 	return (conf);
+}
+
+static void	deal_add(t_list **r_lst, t_list **tmp)
+{
+	if (!*r_lst)
+		ft_lstadd(r_lst, *tmp);
+	else if (!diff_room(*tmp, *r_lst))
+		ft_lstadd_back(*r_lst, *tmp);
+	else
+		ft_lstdel(tmp, (void(*)(void*, size_t))del_room);
 }
 
 t_list		*mk_lstroom(t_list **line_lst)
@@ -38,22 +49,20 @@ t_list		*mk_lstroom(t_list **line_lst)
 	data.i = 0;
 	data.r_lst = NULL;
 	data.str = ((t_line*)((*line_lst)->content))->line;
-	while ((!ch_room_format(data.str) && data.i < (ft_lstcount(*line_lst) - 1))
-		|| (*data.str == '#' && data.i < (ft_lstcount(*line_lst) - 1)))
+	data.len = ft_lstcount(*line_lst) - 1;
+	while ((!ch_room_format(data.str) && data.i < data.len)
+		|| (*data.str == '#' && data.i < data.len))
 	{
 		data.conf = deal_com(line_lst, &data.i);
 		data.str = ((t_line*)((*line_lst)->content))->line;
+		if (ch_room_format(data.str))
+			break ;
 		if (!(data.tmp = get_room(data.str, data.conf)))
 		{
 			ft_lstdel(&data.r_lst, (void(*)(void*, size_t))del_room);
 			return (NULL);
 		}
-		if (!data.r_lst)
-			ft_lstadd(&data.r_lst, data.tmp);
-		else if (!diff_room(data.tmp, data.r_lst))
-			ft_lstadd_back(data.r_lst, data.tmp);
-		else
-			ft_lstdel(&data.tmp, (void(*)(void*, size_t))del_room);
+		deal_add(&data.r_lst, &data.tmp);
 		ft_lstrotate(line_lst);
 		data.str = ((t_line*)((*line_lst)->content))->line;
 		(data.i)++;

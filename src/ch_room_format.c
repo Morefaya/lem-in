@@ -18,7 +18,7 @@ static int	abscisse(char **line)
 		(*line)++;
 	if (**line == '-')
 	{
-		if (ft_isdigit(**(line + 1)))
+		if (ft_isdigit(*((*line) + 1)))
 			(*line)++;
 		else
 			return (2);
@@ -36,7 +36,7 @@ static int	ordonne(char **line)
 		(*line)++;
 	if (**line == '-')
 	{
-		if (ft_isdigit(**(line + 1)))
+		if (ft_isdigit(*((*line) + 1)))
 			(*line)++;
 		else
 			return (4);

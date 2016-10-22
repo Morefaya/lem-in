@@ -32,7 +32,7 @@ int	main(void)
 	if ((nb_ant = check_nbant(line_lst)) <= 0)
 	{
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
-		ft_printf("Error\n");
+		ft_printf("Error_1\n");
 		return (1);
 	}
 	ft_lstrotate(&line_lst);
@@ -40,12 +40,14 @@ int	main(void)
 	if (!(r_lst = mk_lstroom(&line_lst)))
 	{
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
+		ft_printf("Error_2\n");
 		return (1);
 	}
 	if (!(p_lst = mk_lstpipe(&line_lst, r_lst)))
 	{
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 		ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
+		ft_printf("Error_3\n");
 		return (1);
 	}
 	h_lst = mk_anthill(&r_lst);

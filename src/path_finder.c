@@ -43,50 +43,6 @@ static void	add_path(t_list **w_lst, t_list **ph_lst)
 		ft_lstadd_back(*ph_lst, tmp);
 }
 
-
-/*
-int		path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst, int i)
-{
-	char	*str;
-	t_list	*xion;
-	t_list	*pipe;
-	t_list	*done;
-	int	ret;
-
-	done = NULL;
-	ret = 0;
-	add_way(h_lst, w_lst);
-	ft_printf("in => stack n_%d\n", i);
-	if (((t_hill*)(h_lst->content))->cmd == END)
-	{
-		ft_printf("end\n");
-		add_path(w_lst, ph_lst);
-		return (1);
-	}
-	str = ((t_hill*)(h_lst->content))->n;
-	xion = ((t_hill*)(h_lst->content))->xion;
-	pipe = ((t_xion*)(xion->content))->pipe;
-	while (xion)
-	{
-		pipe = ((t_xion*)(xion->content))->pipe;
-		if (xion && !check_way(pipe, *w_lst) && !check_way(pipe, done))
-		{
-			add_way(pipe, &done);
-			ret = path_finder(pipe, w_lst, ph_lst, i + 1);
-		}
-		else if ((xion && check_way(pipe, *w_lst)) ||
-			(xion && check_way(pipe, done)))
-			xion = xion->next;
-	}
-	if (!xion)
-	{
-		add_path(w_lst, ph_lst);
-	}
-
-	ft_printf("out <= stack n_%d\n", i);
-	return (0);
-}*/
-
 void		path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst)
 {
 	t_list	*xion;
