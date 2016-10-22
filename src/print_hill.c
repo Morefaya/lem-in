@@ -27,11 +27,11 @@ void	print_hill(t_list *hill)
 			print_xion(((t_hill*)(hill->content))->xion);
 			ft_printf("\n");
 		}
-		if (((t_hill*)(hill->content))->a_lst)
+		/*if (((t_hill*)(hill->content))->a_lst)
 		{
 			print_ant(((t_hill*)(hill->content))->a_lst);
 			ft_printf("\n");
-		}
+		}*/
 		ft_printf("\n");
 		hill = hill->next;
 	}

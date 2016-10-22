@@ -35,7 +35,6 @@ int	main(void)
 		ft_printf("Error\n");
 		return (1);
 	}
-	//ft_printf("nb_ant :%d\n", nb_ant);
 	ft_lstrotate(&line_lst);
 	i = 1;
 	if (!(r_lst = mk_lstroom(&line_lst)))
@@ -43,26 +42,21 @@ int	main(void)
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 		return (1);
 	}
-	//print_r_lst(r_lst);
 	if (!(p_lst = mk_lstpipe(&line_lst, r_lst)))
 	{
 		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 		ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 		return (1);
 	}
-	//print_p_lst(p_lst);
 	h_lst = mk_anthill(&r_lst);
 	a_lst = get_antlst(nb_ant, h_lst);
-	//print_ant(a_lst);
 	init_ant(a_lst, h_lst);
 	init_xion(&h_lst, p_lst);
-	//print_hill(h_lst);
 	w_lst = NULL;
 	ph_lst = NULL;
 	as_lst = NULL;
-	path_finder(h_lst, &w_lst, &ph_lst, 0);
-	print_xion(ph_lst);
-	//print_path(ph_lst);
+	path_finder(h_lst, &w_lst, &ph_lst);
+	print_path(ph_lst);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
