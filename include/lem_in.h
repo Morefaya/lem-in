@@ -98,4 +98,6 @@ void				path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst);
 void				del_xion(t_xion *xion, size_t size);
 void				print_path(t_list *path);
 t_list				*xion_cpy(t_list *xion);
+t_list				*mk_antseek_lst(t_list *a_lst);
+void				print_antseek(t_list *s_lst);
 #endif

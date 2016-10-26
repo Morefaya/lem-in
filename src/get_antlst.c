@@ -14,7 +14,7 @@
 
 t_list	*get_antlst(int nb_ant, t_list *h_lst)
 {
-	int		i;
+	int	i;
 	t_ant	content;
 	t_list	*a_lst;
 	t_list	*tmp;

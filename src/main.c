@@ -85,6 +85,7 @@ int		main(void)
 	t_list	*a_lst;
 	t_list	*w_lst;
 	t_list	*ph_lst;
+	t_list	*s_lst;
 	int	max_queue;
 
 	if (!(line_lst = get_anthill()))
@@ -114,6 +115,8 @@ int		main(void)
 	h_lst = mk_anthill(&r_lst);
 	a_lst = get_antlst(nb_ant, h_lst);
 	init_ant(a_lst, h_lst);
+	s_lst = NULL;
+	s_lst = mk_antseek_lst(a_lst);
 	init_xion(&h_lst, p_lst);
 	max_queue = get_max_queue(h_lst);
 	w_lst = NULL;
@@ -121,6 +124,8 @@ int		main(void)
 	path_finder(h_lst, &w_lst, &ph_lst);
 	print_path(ph_lst);
 	ft_printf("max_queue :%d\n", max_queue);
+	print_antseek(s_lst);
+	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
 	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
