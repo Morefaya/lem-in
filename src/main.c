@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/15 17:11:45 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/10/27 17:10:13 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static int	check_start_end(t_list *r_lst)
 int		main(void)
 {
 	t_list	*line_lst;
+	int		ret;
 	int	nb_ant;
 	int	len_l;
 	int	i;
@@ -126,9 +127,11 @@ int		main(void)
 	//ft_printf("max_queue :%d\n", max_queue);
 	//print_antseek(s_lst);
 	//print_ant(a_lst);
+	//ft_printf("dif\n");
+	//print_ant(((t_xion*)(s_lst->content))->pipe);
 	//print_hill(h_lst);
-	int ret = solver(&s_lst, &h_lst, &ph_lst);
-	ft_printf("ret :%d\n", ret);
+	ret = solver(&a_lst, &h_lst, &ph_lst);
+	//ft_printf("ret :%d\n", ret);
 	//print_hill(h_lst);
 	//print_ant(a_lst);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
