@@ -122,9 +122,15 @@ int		main(void)
 	w_lst = NULL;
 	ph_lst = NULL;
 	path_finder(h_lst, &w_lst, &ph_lst);
-	print_path(ph_lst);
-	ft_printf("max_queue :%d\n", max_queue);
-	print_antseek(s_lst);
+	//print_path(ph_lst);
+	//ft_printf("max_queue :%d\n", max_queue);
+	//print_antseek(s_lst);
+	//print_ant(a_lst);
+	//print_hill(h_lst);
+	int ret = solver(&s_lst, &h_lst, &ph_lst);
+	ft_printf("ret :%d\n", ret);
+	//print_hill(h_lst);
+	//print_ant(a_lst);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
