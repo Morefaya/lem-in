@@ -1,4 +1,4 @@
-67
+7
 salle_1 5 6
 salle_2 34 78
 #panda panda

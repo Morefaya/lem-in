@@ -115,7 +115,7 @@ int		main(void)
 	}
 	h_lst = mk_anthill(&r_lst);
 	a_lst = get_antlst(nb_ant, h_lst);
-	init_ant(a_lst, h_lst);
+	//init_ant(a_lst, h_lst);
 	s_lst = NULL;
 	s_lst = mk_antseek_lst(a_lst);
 	init_xion(&h_lst, p_lst);

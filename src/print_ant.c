@@ -16,12 +16,14 @@ void	print_ant(t_list *a_lst)
 {
 	int		nu;
 	t_list	*tmp;
+	char	*str;
 
 	while (a_lst)
 	{
 		nu = ((t_ant*)(a_lst->content))->nu;
 		tmp = ((t_ant*)(a_lst->content))->hill;
-		ft_printf("ant :%d\t addr :%p\n", nu, tmp);
+		str = ((t_hill*)(tmp->content))->n;
+		ft_printf("ant :%d\t addr :%p\troom :%s\n", nu, tmp, str);
 		a_lst = a_lst->next;
 	}
 }
