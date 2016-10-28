@@ -49,6 +49,17 @@ typedef struct		s_mk_lstr
 	int			len;
 }					t_mk_lstr;
 
+typedef struct		s_solver
+{
+	int		nb_ant;
+	int		i;
+	int		j;
+	t_list		*t_1;
+	t_list		*t_2;
+	t_list		*t_3;
+	t_list		*end;
+}			t_solver;
+
 typedef struct		s_ant
 {
 	int				nu;
