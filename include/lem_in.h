@@ -127,4 +127,5 @@ void				print_antseek(t_list *s_lst);
 int				solver(t_list **s_lst, t_list **h_lst, t_list **path);
 t_list				*get_comb(t_list *path, int nb);
 void				print_comb(t_list *comb);
+void				del_path(t_xion *path, size_t size);
 #endif

@@ -123,14 +123,15 @@ int		main(void)
 	ph_lst = NULL;
 	path_finder(h_lst, &w_lst, &ph_lst);
 	print_path(ph_lst);
-	ft_printf("\n\ncomb:\n\n\n");
+	ft_printf("\n\ncomb:\n\n");
 	ret = solver(&a_lst, &h_lst, &ph_lst);
 	t_list	*comb;
 	comb = NULL;
 	comb = get_comb(ph_lst, 2);
 	//ft_printf("%p\n", comb);
 	print_comb(comb);
-	ft_lstdel(&comb, (void(*)(void*, size_t))del_xion);
+	ft_lstdel(&comb, (void(*)(void*, size_t))del_path);
+	ft_lstdel(&ph_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
@@ -138,6 +139,6 @@ int		main(void)
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 	ft_lstdel(&h_lst, (void(*)(void*, size_t))del_hill);
 	ft_lstdel(&a_lst, (void(*)(void*, size_t))del_ant);
-	while (42);
+	//while (42);
 	return (0);
 }

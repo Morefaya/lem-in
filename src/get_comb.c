@@ -32,6 +32,12 @@ int	add_comb(t_list *t_1, t_list **tmp_4)
 	return (0);
 }
 
+t_list	*delete_comb(t_list **comb)
+{
+	ft_lstdel(comb, (void(*)(void*, size_t))del_path);
+	return (NULL);
+}
+
 t_list	*get_comb(t_list *path, int nb)
 {
 	t_get_comb	data;
@@ -45,17 +51,12 @@ t_list	*get_comb(t_list *path, int nb)
 		{
 			data.tmp_3 = ((t_xion*)(data.tmp_2->content))->pipe;
 			if (add_comb(data.tmp_3, &data.tmp_4))
-			{
-				return (NULL);
-			}
+				return (delete_comb(&data.comb));
 			data.tmp_2 = data.tmp_2->next;
 			data.j++;
 		}
 		if (add_comb(data.tmp_4, &data.comb))
-		{
-			ft_lstdel(&data.comb, (void(*)(void*, size_t))del_xion);
-			return (NULL);
-		}
+			return (delete_comb(&data.comb));
 		data.tmp_1 = data.tmp_1->next;
 		data.i++;
 	}
