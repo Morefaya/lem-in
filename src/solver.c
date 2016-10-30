@@ -60,8 +60,8 @@ int		solver(t_list **a_lst, t_list **h_lst, t_list **path)
 	s.t_3 = NULL;
 	s.i = 0;
 	s.j = 0;
-	print_ant(*a_lst);
-	ft_printf("\n");
+	//print_ant(*a_lst);
+	//ft_printf("\n");
 	while (check_loop(*a_lst, s.end))
 	{	
 		while (s.i < s.nb_ant)
@@ -71,8 +71,8 @@ int		solver(t_list **a_lst, t_list **h_lst, t_list **path)
 			ft_lstrev_rotate(path);
 			s.i--;
 		}
-		print_ant(*a_lst);
-		ft_printf("\n");
+		//print_ant(*a_lst);
+		//ft_printf("\n");
 		s.j++;
 	}
 	return (s.j);

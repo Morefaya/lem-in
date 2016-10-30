@@ -60,6 +60,7 @@ typedef struct		s_solver
 	t_list		*end;
 }			t_solver;
 
+
 typedef struct		s_ant
 {
 	int				nu;
@@ -78,6 +79,20 @@ typedef struct		s_xion
 {
 	t_list			*pipe;
 }					t_xion;
+
+typedef struct		s_get_comb
+{
+	t_list		*comb;
+	t_list		*tmp;
+	t_xion		content;
+	t_list		*tmp_1;
+	t_list		*tmp_2;
+	t_list		*tmp_3;
+	t_list		*tmp_4;
+	int		i;
+	int		j;
+	int		len;
+}			t_get_comb;
 
 void				print_line(t_list *line_lst);
 t_list				*get_anthill(void);
@@ -112,4 +127,5 @@ t_list				*xion_cpy(t_list *xion);
 t_list				*mk_antseek_lst(t_list *a_lst);
 void				print_antseek(t_list *s_lst);
 int				solver(t_list **s_lst, t_list **h_lst, t_list **path);
+t_list				*get_comb(t_list *path, int nb);
 #endif

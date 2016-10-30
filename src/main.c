@@ -115,7 +115,6 @@ int		main(void)
 	}
 	h_lst = mk_anthill(&r_lst);
 	a_lst = get_antlst(nb_ant, h_lst);
-	//init_ant(a_lst, h_lst);
 	s_lst = NULL;
 	s_lst = mk_antseek_lst(a_lst);
 	init_xion(&h_lst, p_lst);
@@ -124,16 +123,19 @@ int		main(void)
 	ph_lst = NULL;
 	path_finder(h_lst, &w_lst, &ph_lst);
 	//print_path(ph_lst);
-	//ft_printf("max_queue :%d\n", max_queue);
-	//print_antseek(s_lst);
-	//print_ant(a_lst);
-	//ft_printf("dif\n");
-	//print_ant(((t_xion*)(s_lst->content))->pipe);
-	//print_hill(h_lst);
+	//ft_printf("\n\ncomb:\n\n\n");
 	ret = solver(&a_lst, &h_lst, &ph_lst);
-	//ft_printf("ret :%d\n", ret);
-	//print_hill(h_lst);
-	//print_ant(a_lst);
+	t_list	*comb;
+	comb = NULL;
+	//comb = get_comb(ph_lst, 2);
+	//ft_printf("%p\n", comb);
+	/*while (comb)
+	{
+		ft_printf("PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATH\n");
+		print_path(((t_xion*)(comb->content))->pipe);
+		comb = comb->next;
+	}*/
+	ft_lstdel(&comb, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
@@ -141,6 +143,6 @@ int		main(void)
 	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
 	ft_lstdel(&h_lst, (void(*)(void*, size_t))del_hill);
 	ft_lstdel(&a_lst, (void(*)(void*, size_t))del_ant);
-	//while (42);
+	while (42);
 	return (0);
 }
