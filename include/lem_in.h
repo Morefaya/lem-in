@@ -83,8 +83,6 @@ typedef struct		s_xion
 typedef struct		s_get_comb
 {
 	t_list		*comb;
-	t_list		*tmp;
-	t_xion		content;
 	t_list		*tmp_1;
 	t_list		*tmp_2;
 	t_list		*tmp_3;
@@ -128,4 +126,5 @@ t_list				*mk_antseek_lst(t_list *a_lst);
 void				print_antseek(t_list *s_lst);
 int				solver(t_list **s_lst, t_list **h_lst, t_list **path);
 t_list				*get_comb(t_list *path, int nb);
+void				print_comb(t_list *comb);
 #endif

@@ -38,23 +38,14 @@ t_list	*get_comb(t_list *path, int nb)
 
 	if (init_1(&data, path, nb))
 		return (NULL);
-	/*if ((data.len = ft_lstcount(path)) < nb)
-		return (NULL);
-	data.comb = NULL;
-	data.tmp_1 = path;
-	data.i = 0;*/
 	while (data.i < nb)
 	{
-		/*data.tmp_2 = data.tmp_1;
-		data.tmp_4 = NULL;
-		data.j = 0;*/
 		init_2(&data);
 		while (data.j < data.len - nb + 1)
 		{
 			data.tmp_3 = ((t_xion*)(data.tmp_2->content))->pipe;
 			if (add_comb(data.tmp_3, &data.tmp_4))
 			{
-				ft_lstdel(&data.comb, (void(*)(void*, size_t))del_xion);
 				return (NULL);
 			}
 			data.tmp_2 = data.tmp_2->next;
