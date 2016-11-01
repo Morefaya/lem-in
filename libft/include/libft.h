@@ -17,6 +17,8 @@
 # define BASE_HEX_B "0123456789ABCDEF"
 # define BASE_OCT "01234567"
 # define BASE_10 "0123456789"
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 # include <string.h>
 # include "get_next_line.h"
