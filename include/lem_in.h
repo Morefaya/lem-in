@@ -92,6 +92,15 @@ typedef struct		s_get_comb
 	int		len;
 }			t_get_comb;
 
+typedef struct		s_recu_comb
+{
+	t_list		*cb_idx;
+	t_list		**shot;
+	t_list		**cb_lst;
+	int		nb;
+	int		index;
+}			t_recu_comb;
+
 void				print_line(t_list *line_lst);
 t_list				*get_anthill(void);
 int					check_nbant(t_list *lst);
@@ -128,4 +137,7 @@ int				solver(t_list **s_lst, t_list **h_lst, t_list **path);
 t_list				*get_comb(t_list *path, int nb);
 void				print_comb(t_list *comb);
 void				del_path(t_xion *path, size_t size);
+t_list				*mk_comb(t_list *path, int nb);
+void				recu_comb(t_recu_comb data);
+void				jump(t_recu_comb data, t_list *tmp_1, int i);
 #endif

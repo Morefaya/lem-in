@@ -87,6 +87,7 @@ int		main(void)
 	t_list	*w_lst;
 	t_list	*ph_lst;
 	t_list	*s_lst;
+	t_list	*cb_lst;
 	int	max_queue;
 
 	if (!(line_lst = get_anthill()))
@@ -122,15 +123,10 @@ int		main(void)
 	w_lst = NULL;
 	ph_lst = NULL;
 	path_finder(h_lst, &w_lst, &ph_lst);
-	print_path(ph_lst);
-	ft_printf("\n\ncomb:\n\n");
 	ret = solver(&a_lst, &h_lst, &ph_lst);
-	t_list	*comb;
-	comb = NULL;
-	comb = get_comb(ph_lst, 2);
-	//ft_printf("%p\n", comb);
-	print_comb(comb);
-	ft_lstdel(&comb, (void(*)(void*, size_t))del_path);
+	cb_lst = mk_comb(ph_lst, 2);
+	print_comb(cb_lst);
+	ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&ph_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
 	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
