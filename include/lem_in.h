@@ -140,4 +140,6 @@ void				del_path(t_xion *path, size_t size);
 t_list				*mk_comb(t_list *path, int nb);
 void				recu_comb(t_recu_comb data);
 void				jump(t_recu_comb data, t_list *tmp_1, int i);
+t_list				*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max);
+t_list				*path_cpy(t_list *path);
 #endif

@@ -76,7 +76,6 @@ static int	check_start_end(t_list *r_lst)
 int		main(void)
 {
 	t_list	*line_lst;
-	int		ret;
 	int	nb_ant;
 	int	len_l;
 	int	i;
@@ -123,9 +122,8 @@ int		main(void)
 	w_lst = NULL;
 	ph_lst = NULL;
 	path_finder(h_lst, &w_lst, &ph_lst);
-	ret = solver(&a_lst, &h_lst, &ph_lst);
-	cb_lst = mk_comb(ph_lst, 2);
-	print_comb(cb_lst);
+	cb_lst = brute_fcomb(&h_lst, &ph_lst, nb_ant, max_queue);
+	print_path(cb_lst);
 	ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&ph_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
