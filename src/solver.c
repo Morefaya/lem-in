@@ -41,17 +41,19 @@ static void	help_solver(t_solver *s, t_list **path, t_list **a_lst)
 	if (s->t_2 == s->end || !((t_hill*)(s->t_2->content))->a_lst)
 	{
 		((t_ant*)((*a_lst)->content))->hill = s->t_2;
+		/*if (opt & PRINT)
+			print_move(a_lst);*/
 		((t_hill*)(s->t_2->content))->a_lst = *a_lst;
 		if (s->t_3)
 			((t_hill*)(s->t_3->content))->a_lst = NULL;
-		}
-		s->t_3 = s->t_2;
-		ft_lstrotate(a_lst);
-		ft_lstrotate(path);
-		s->i++;
+	}
+	s->t_3 = s->t_2;
+	ft_lstrotate(a_lst);
+	ft_lstrotate(path);
+	s->i++;
 }
 
-int		solver(t_list **a_lst, t_list **h_lst, t_list **path)
+int		solver(t_list **a_lst, t_list **h_lst, t_list **path, int opt)
 {
 	t_solver	s;
 
@@ -66,14 +68,20 @@ int		solver(t_list **a_lst, t_list **h_lst, t_list **path)
 	{	
 		while (s.i < s.nb_ant)
 			help_solver(&s, path, a_lst);
+		/*if (opt & PRINT)
+			ft_putchar("\n");*/
 		while (s.i)
 		{
 			ft_lstrev_rotate(path);
 			s.i--;
 		}
+		/*if ((opt & PRINT) && (opt & OPT_A))
+			print_estate(*h_lst);*/
 		//print_ant(*a_lst);
 		//ft_printf("\n");
 		s.j++;
 	}
+	/*if (opt & OPT_B)
+		ft_printf("Nombre de tour: %d\n", s.j);*/
 	return (s.j);
 }

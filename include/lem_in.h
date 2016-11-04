@@ -19,6 +19,9 @@
 # define START 01
 # define END 02
 # define NONE 00
+# define OPT_A START
+# define OPT_B END
+# define PRINT 04
 
 typedef struct		s_line
 {
@@ -133,7 +136,7 @@ void				print_path(t_list *path);
 t_list				*xion_cpy(t_list *xion);
 t_list				*mk_antseek_lst(t_list *a_lst);
 void				print_antseek(t_list *s_lst);
-int				solver(t_list **s_lst, t_list **h_lst, t_list **path);
+int				solver(t_list **s_lst, t_list **h_lst, t_list **path, int opt);
 t_list				*get_comb(t_list *path, int nb);
 void				print_comb(t_list *comb);
 void				del_path(t_xion *path, size_t size);
