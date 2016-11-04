@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/27 17:10:13 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/04 17:23:19 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,10 @@ int		main(void)
 	w_lst = NULL;
 	ph_lst = NULL;
 	path_finder(h_lst, &w_lst, &ph_lst);
-	cb_lst = brute_fcomb(&h_lst, &ph_lst, nb_ant, max_queue);
+	int	opt = 0;
+	cb_lst = brute_fcomb(&h_lst, &ph_lst, nb_ant, max_queue, opt);
 	print_path(cb_lst);
+	solver(&a_lst, &h_lst, &cb_lst, opt | PRINT | OPT_A);
 	ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&ph_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);

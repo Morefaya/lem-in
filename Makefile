@@ -6,7 +6,7 @@ diff_room.c diff_pipe.c get_pipe.c mk_lstpipe.c del_pipe.c print_p_lst.c\
 print_hill.c mk_anthill.c get_antlst.c del_ant.c del_hill.c print_ant.c\
 init_xion.c init_ant.c print_xion.c path_finder.c del_xion.c print_path.c\
 xion_cpy.c mk_antseek_lst.c print_antseek.c solver.c get_comb.c print_comb.c\
-del_path.c mk_comb.c brute_fcomb.c path_cpy.c
+del_path.c mk_comb.c brute_fcomb.c path_cpy.c print_move.c print_estate.c
 SRC_DIR = ./src
 SRC_C = $(patsubst %, $(SRC_DIR)/%, $(SRC))
 OBJ = $(SRC:.c=.o)
