@@ -17,12 +17,14 @@ void	print_estate(t_list *h_lst, t_list *a_lst)
 	t_list	*tmp;
 	int		nu;
 	char	*str;
+	int	cmd;
 
 	while (h_lst)
 	{
 		str = ((t_hill*)(h_lst->content))->n;
 		ft_printf("%s : ", str);
 		tmp = a_lst;
+		cmd = ((t_hill*)(h_lst->content))->cmd;
 		while (tmp)
 		{
 			if (((t_ant*)(tmp->content))->hill == h_lst)
@@ -32,6 +34,10 @@ void	print_estate(t_list *h_lst, t_list *a_lst)
 			}
 			tmp = tmp->next;
 		}
+		if (cmd == START)
+			ft_printf(" <- START");
+		else if (cmd == END)
+			ft_printf(" <- END");
 		ft_printf("\n");
 		h_lst = h_lst->next;
 	}

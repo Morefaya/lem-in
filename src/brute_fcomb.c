@@ -1,6 +1,6 @@
 #include "lem_in.h"
 
-static void	get_bf_comb(t_list *cb_lst, t_list **h_lst, int nb_ant, t_list **bf_comb, int *low, int opt)
+static void	get_bf_comb(t_list *cb_lst, t_list **h_lst, int nb_ant, t_list **bf_comb, int *low)
 {
 	t_list	**tmp_1;
 	int	ret;
@@ -10,7 +10,7 @@ static void	get_bf_comb(t_list *cb_lst, t_list **h_lst, int nb_ant, t_list **bf_
 	{
 		tmp_1 = &((t_xion*)(cb_lst->content))->pipe;
 		a_lst = get_antlst(nb_ant, *h_lst);
-		if ((ret = solver(&a_lst, h_lst, tmp_1, opt)) < *low)
+		if ((ret = solver(&a_lst, h_lst, tmp_1, 0)) < *low)
 		{
 			*low = ret;
 			ft_lstdel(bf_comb, (void(*)(void*, size_t))del_path);
@@ -21,7 +21,7 @@ static void	get_bf_comb(t_list *cb_lst, t_list **h_lst, int nb_ant, t_list **bf_
 	}
 }
 
-t_list	*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max, int opt)
+t_list	*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max)
 {
 	int	i;
 	int	tmp;
@@ -36,7 +36,7 @@ t_list	*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max, int op
 	while (i <= max)
 	{
 		cb_lst = mk_comb(*ph_lst, i);
-		get_bf_comb(cb_lst, h_lst, nb_ant, &bf_comb, &low, opt);
+		get_bf_comb(cb_lst, h_lst, nb_ant, &bf_comb, &low);
 		ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
 		i++;
 	}
