@@ -1,5 +1,29 @@
 #include "lem_in.h"
 
+static int	get_totlen(t_list *path)
+{
+	int	len;
+	int	i;
+	t_list	*tmp_1;
+	t_list	*tmp_2;
+
+	len = 0;
+	tmp_1 = XION(path);
+	while (tmp_1)
+	{
+		i = 0;
+		tmp_2 = XION(tmp_1);
+		while (tmp_2)
+		{
+			i++;
+			tmp_2 = tmp_2->next;
+		}
+		len +=i;
+		tmp_1 = tmp_1->next;
+	}
+	return (len);
+}
+
 static t_list	*get_end(t_list *h_lst)
 {
 	while (h_lst)
@@ -59,9 +83,7 @@ int	deal_move(t_list *ant, t_list *a_lst, t_list *path, t_list *end, int opt)
 		way = ((t_xion*)(tmp->content))->pipe;
 	if ((check_ant_pos(a_lst, way) && way != end)
 		|| pos == end)
-	{
 		return (1);
-	}
 	str = ((t_hill*)(way->content))->n;
 	((t_ant*)(ant->content))->hill = way;
 	if (opt & PRINT)
@@ -94,12 +116,13 @@ int		solver(t_list **a_lst, t_list **h_lst, t_list **path, int opt)
 	s.nb_ant = ft_lstcount(*a_lst);
 	s.end = get_end(*h_lst);
 	s.j = 0;
+	s.i = get_totlen(*path) + s.nb_ant;
 	if ((opt & PRINT) && (opt & OPT_A))
 	{
 		print_estate(*h_lst, *a_lst);
 		ft_putchar('\n');
 	}
-	while (check_loop(*a_lst, s.end))
+	while (check_loop(*a_lst, s.end) && s.j < s.i)
 	{
 		move_ant(*a_lst, *path, s.end, opt);
 		s.j++;

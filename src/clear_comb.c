@@ -5,13 +5,17 @@ static int	check_comb(t_list *comb)
 {
 	t_list	*tmp_1;
 	t_list	*tmp_2;
+	int	i;
 
 	tmp_1 = ((t_xion*)(comb->content))->pipe;
 	tmp_2 = ((t_xion*)(tmp_1->content))->pipe;
 	while (tmp_1)
 	{
+		i = 0;
 		tmp_2 = XION(XION(tmp_1)->next);
 		ft_printf("%p\t%p\n", tmp_1, tmp_2);
+		if (i > 1)
+			return (1);
 		tmp_1 = tmp_1->next;
 	}
 	return (0);
