@@ -22,6 +22,7 @@
 # define OPT_A START
 # define OPT_B END
 # define PRINT 04
+# define XION(tmp) ((t_xion*)(tmp->content))->pipe
 
 typedef struct		s_line
 {
@@ -147,4 +148,5 @@ t_list				*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max);
 t_list				*path_cpy(t_list *path);
 void				print_move(t_list *a_lst, t_list *h_lst);
 void				print_estate(t_list *h_lst, t_list *a_lst);
+void				clear_comb(t_list **cb_lst);
 #endif

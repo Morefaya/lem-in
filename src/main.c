@@ -123,9 +123,13 @@ int		main(void)
 	ph_lst = NULL;
 	path_finder(h_lst, &w_lst, &ph_lst);
 	cb_lst = NULL;
-	cb_lst = brute_fcomb(&h_lst, &ph_lst, nb_ant, max_queue);
-	print_path(cb_lst);
-	solver(&a_lst, &h_lst, &cb_lst, PRINT | OPT_B);
+	//print_path(ph_lst);
+	//ft_printf("%d\n", max_queue);
+	//cb_lst = brute_fcomb(&h_lst, &ph_lst, nb_ant, max_queue);
+	print_path(ph_lst);
+	cb_lst = mk_comb(ph_lst, max_queue);
+	clear_comb(&cb_lst);
+	//solver(&a_lst, &h_lst, &ph_lst, PRINT | OPT_A);
 	ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&ph_lst, (void(*)(void*, size_t))del_path);
 	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);

@@ -59,7 +59,9 @@ int	deal_move(t_list *ant, t_list *a_lst, t_list *path, t_list *end, int opt)
 		way = ((t_xion*)(tmp->content))->pipe;
 	if ((check_ant_pos(a_lst, way) && way != end)
 		|| pos == end)
+	{
 		return (1);
+	}
 	str = ((t_hill*)(way->content))->n;
 	((t_ant*)(ant->content))->hill = way;
 	if (opt & PRINT)
