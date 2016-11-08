@@ -27,29 +27,26 @@ static int	check_line(char *line)
 		return (0);
 }
 
-t_list		*get_anthill(void)
+void		get_anthill(int fd, t_list **lst)
 {
 	char	*line;
-	t_list	*lst;
 	t_list	*tmp;
 	t_line	content;
 
-	lst = NULL;
-	while (get_next_line(0, &line) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		if (!check_line(line))
 		{
 			content.line = line;
 			if (!(tmp = ft_lstnew(&content, sizeof(content))))
-				return (NULL);
-			if (!lst)
-				ft_lstadd(&lst, tmp);
+				return ;
+			if (!*lst)
+				ft_lstadd(lst, tmp);
 			else
-				ft_lstadd_back(lst, tmp);
+				ft_lstadd_back(*lst, tmp);
 		}
 		else
 			free(line);
 	}
 	free(line);
-	return (lst);
 }

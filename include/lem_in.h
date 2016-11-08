@@ -15,12 +15,14 @@
 
 # include "libft.h"
 # include "ft_printf.h"
+# include <fcntl.h>
 
 # define START 01
 # define END 02
 # define NONE 00
 # define OPT_A START
 # define OPT_B END
+# define OPT_FLAG "ab"
 # define PRINT 04
 # define XION(tmp) ((t_xion*)(tmp->content))->pipe
 
@@ -105,8 +107,34 @@ typedef struct		s_recu_comb
 	int		index;
 }			t_recu_comb;
 
+typedef struct		s_data
+{
+	t_list		*lst;
+	int		i;
+	int		fd;
+	int		cond;
+}			t_data;
+
+typedef struct		s_main
+{
+	t_list		*line_lst;
+	int		nb_ant;
+	int		len_l;
+	int		i;
+	t_list		*r_lst;
+	t_list		*p_lst;
+	t_list		*h_lst;
+	t_list		*a_lst;
+	t_list		*w_lst;
+	t_list		*ph_lst;
+	t_list		*s_lst;
+	t_list		*cb_lst;
+	int		max_queue;
+	int		opt;
+}			t_main;
+
 void				print_line(t_list *line_lst);
-t_list				*get_anthill(void);
+void				get_anthill(int fd, t_list **lst);
 int					check_nbant(t_list *lst);
 int					strlen_space(char *str);
 t_list				*get_room(char *line, int cmd);
@@ -149,4 +177,8 @@ t_list				*path_cpy(t_list *path);
 void				print_move(t_list *a_lst, t_list *h_lst);
 void				print_estate(t_list *h_lst, t_list *a_lst);
 void				clear_comb(t_list **cb_lst);
+t_list				*get_data(int ac, char **av, int *opt);
+int				check_opt(char *str, int *opt);
+void				free_all(t_main *main);
+void				init_main(t_main *main);
 #endif

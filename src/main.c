@@ -73,72 +73,38 @@ static int	check_start_end(t_list *r_lst)
 		return (1);
 }
 
-int		main(void)
+static int	help_free(t_main *main, int ret)
 {
-	t_list	*line_lst;
-	int	nb_ant;
-	int	len_l;
-	int	i;
-	t_list	*r_lst;
-	t_list	*p_lst;
-	t_list	*h_lst;
-	t_list	*a_lst;
-	t_list	*w_lst;
-	t_list	*ph_lst;
-	t_list	*s_lst;
-	t_list	*cb_lst;
-	int	max_queue;
+	free_all(main);
+	ft_printf("Error\n");
+	return (ret);
+}
 
-	if (!(line_lst = get_anthill()))
+int		main(int ac, char **av)
+{
+	t_main	m;
+
+	init_main(&m);
+	if (!(m.line_lst = get_data(ac, av, &m.opt)))
 		return (1);
-	len_l = ft_lstcount(line_lst);
-	if ((nb_ant = check_nbant(line_lst)) <= 0)
-	{
-		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
-		ft_printf("Error_1\n");
-		return (1);
-	}
-	ft_lstrotate(&line_lst);
-	i = 1;
-	if (!(r_lst = mk_lstroom(&line_lst)) || check_start_end(r_lst))
-	{
-		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
-		ft_printf("Error_2\n");
-		return (1);
-	}
-	if (!(p_lst = mk_lstpipe(&line_lst, r_lst)))
-	{
-		ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
-		ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
-		ft_printf("Error_3\n");
-		return (1);
-	}
-	h_lst = mk_anthill(&r_lst);
-	a_lst = get_antlst(nb_ant, h_lst);
-	s_lst = NULL;
-	s_lst = mk_antseek_lst(a_lst);
-	init_xion(&h_lst, p_lst);
-	max_queue = get_max_queue(h_lst);
-	w_lst = NULL;
-	ph_lst = NULL;
-	path_finder(h_lst, &w_lst, &ph_lst);
-	cb_lst = NULL;
-	//print_path(ph_lst);
-	//ft_printf("%d\n", max_queue);
-	cb_lst = brute_fcomb(&h_lst, &ph_lst, nb_ant, max_queue);
-	//print_path(ph_lst);
-	//cb_lst = mk_comb(ph_lst, max_queue);
-	//clear_comb(&cb_lst);
-	solver(&a_lst, &h_lst, &cb_lst, PRINT | OPT_A |OPT_B);
-	ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
-	ft_lstdel(&ph_lst, (void(*)(void*, size_t))del_path);
-	ft_lstdel(&s_lst, (void(*)(void*, size_t))del_xion);
-	ft_lstdel(&w_lst, (void(*)(void*, size_t))del_xion);
-	ft_lstdel(&r_lst, (void(*)(void*, size_t))del_room);
-	ft_lstdel(&p_lst, (void(*)(void*, size_t))del_pipe);
-	ft_lstdel(&line_lst, (void(*)(void*, size_t))del_line);
-	ft_lstdel(&h_lst, (void(*)(void*, size_t))del_hill);
-	ft_lstdel(&a_lst, (void(*)(void*, size_t))del_ant);
-	//while (42);
+	m.len_l = ft_lstcount(m.line_lst);
+	if ((m.nb_ant = check_nbant(m.line_lst)) <= 0)
+		return (help_free(&m, 1));
+	ft_lstrotate(&m.line_lst);
+	if (!(m.r_lst = mk_lstroom(&m.line_lst)) || check_start_end(m.r_lst))
+		return (help_free(&m, 2));
+	if (!(m.p_lst = mk_lstpipe(&m.line_lst, m.r_lst)))
+		return (help_free(&m, 3));
+	m.h_lst = mk_anthill(&m.r_lst);
+	m.a_lst = get_antlst(m.nb_ant, m.h_lst);
+	m.s_lst = mk_antseek_lst(m.a_lst);
+	init_xion(&m.h_lst, m.p_lst);
+	m.max_queue = get_max_queue(m.h_lst);
+	path_finder(m.h_lst, &m.w_lst, &m.ph_lst);
+	if (!m.ph_lst)
+		return (help_free(&m, 4));
+	m.cb_lst = brute_fcomb(&m.h_lst, &m.ph_lst, m.nb_ant, m.max_queue);
+	solver(&m.a_lst, &m.h_lst, &m.cb_lst, m.opt | PRINT);
+	free_all(&m);
 	return (0);
 }
