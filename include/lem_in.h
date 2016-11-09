@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/11/04 16:27:52 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/09 16:09:08 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,19 @@ typedef struct		s_mk_lstr
 	t_list			*r_lst;
 	t_list			*tmp;
 	int				conf;
-	int			len;
+	int				len;
 }					t_mk_lstr;
 
 typedef struct		s_solver
 {
-	int		nb_ant;
-	int		i;
-	int		j;
-	t_list		*t_1;
-	t_list		*t_2;
-	t_list		*t_3;
-	t_list		*end;
-}			t_solver;
-
+	int				nb_ant;
+	int				i;
+	int				j;
+	t_list			*t_1;
+	t_list			*t_2;
+	t_list			*t_3;
+	t_list			*end;
+}					t_solver;
 
 typedef struct		s_ant
 {
@@ -88,50 +87,59 @@ typedef struct		s_xion
 
 typedef struct		s_get_comb
 {
-	t_list		*comb;
-	t_list		*tmp_1;
-	t_list		*tmp_2;
-	t_list		*tmp_3;
-	t_list		*tmp_4;
-	int		i;
-	int		j;
-	int		len;
-}			t_get_comb;
+	t_list			*comb;
+	t_list			*tmp_1;
+	t_list			*tmp_2;
+	t_list			*tmp_3;
+	t_list			*tmp_4;
+	int				i;
+	int				j;
+	int				len;
+}					t_get_comb;
 
 typedef struct		s_recu_comb
 {
-	t_list		*cb_idx;
-	t_list		**shot;
-	t_list		**cb_lst;
-	int		nb;
-	int		index;
-}			t_recu_comb;
+	t_list			*cb_idx;
+	t_list			**shot;
+	t_list			**cb_lst;
+	int				nb;
+	int				index;
+}					t_recu_comb;
 
 typedef struct		s_data
 {
-	t_list		*lst;
-	int		i;
-	int		fd;
-	int		cond;
-}			t_data;
+	t_list			*lst;
+	int				i;
+	int				fd;
+	int				cond;
+}					t_data;
+
+typedef struct		s_bf_comb
+{
+	t_list			*cb_lst;
+	t_list			**h_lst;
+	int				nb_ant;
+	t_list			**bf_comb;
+	int				*low;
+}					t_bf_comb;
 
 typedef struct		s_main
 {
-	t_list		*line_lst;
-	int		nb_ant;
-	int		len_l;
-	int		i;
-	t_list		*r_lst;
-	t_list		*p_lst;
-	t_list		*h_lst;
-	t_list		*a_lst;
-	t_list		*w_lst;
-	t_list		*ph_lst;
-	t_list		*s_lst;
-	t_list		*cb_lst;
-	int		max_queue;
-	int		opt;
-}			t_main;
+	t_list			*line_lst;
+	int				nb_ant;
+	int				len_l;
+	int				i;
+	t_list			*r_lst;
+	t_list			*p_lst;
+	t_list			*h_lst;
+	t_list			*a_lst;
+	t_list			*w_lst;
+	t_list			*ph_lst;
+	t_list			*s_lst;
+	t_list			*cb_lst;
+	int				max_queue;
+	int				opt;
+}					t_main;
 
 void				print_line(t_list *line_lst);
 void				get_anthill(int fd, t_list **lst);
@@ -165,19 +173,19 @@ void				print_path(t_list *path);
 t_list				*xion_cpy(t_list *xion);
 t_list				*mk_antseek_lst(t_list *a_lst);
 void				print_antseek(t_list *s_lst);
-int				solver(t_list **s_lst, t_list **h_lst, t_list **path, int opt);
+int					solver(t_list **s, t_list **h, t_list **p, int o);
 t_list				*get_comb(t_list *path, int nb);
 void				print_comb(t_list *comb);
 void				del_path(t_xion *path, size_t size);
 t_list				*mk_comb(t_list *path, int nb);
 void				recu_comb(t_recu_comb data);
 void				jump(t_recu_comb data, t_list *tmp_1, int i);
-t_list				*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max);
+t_list				*brute_fcomb(t_list **h, t_list **ph, int nb, int max);
 t_list				*path_cpy(t_list *path);
 void				print_move(t_list *a_lst, t_list *h_lst);
 void				print_estate(t_list *h_lst, t_list *a_lst);
 t_list				*get_data(int ac, char **av, int *opt);
-int				check_opt(char *str, int *opt);
+int					check_opt(char *str, int *opt);
 void				free_all(t_main *main);
 void				init_main(t_main *main);
 #endif

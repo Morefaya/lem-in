@@ -1,42 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   brute_fcomb.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/09 16:02:26 by jcazako           #+#    #+#             */
+/*   Updated: 2016/11/09 16:30:33 by jcazako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
-static void	get_bf_comb(t_list *cb_lst, t_list **h_lst, int nb_ant, t_list **bf_comb, int *low)
+static void	get_bf_comb(t_bf_comb *a)
 {
 	t_list	**tmp_1;
-	int	ret;
+	int		ret;
 	t_list	*a_lst;
+	t_list	*cb_lst;
 
+	cb_lst = a->cb_lst;
 	while (cb_lst)
 	{
 		tmp_1 = &((t_xion*)(cb_lst->content))->pipe;
-		a_lst = get_antlst(nb_ant, *h_lst);
-		if ((ret = solver(&a_lst, h_lst, tmp_1, 0)) < *low)
+		a_lst = get_antlst(a->nb_ant, *a->h_lst);
+		if ((ret = solver(&a_lst, a->h_lst, tmp_1, 0)) < *a->low)
 		{
-			*low = ret;
-			ft_lstdel(bf_comb, (void(*)(void*, size_t))del_path);
-			*bf_comb = path_cpy(*tmp_1);
+			*a->low = ret;
+			ft_lstdel(a->bf_comb, (void(*)(void*, size_t))del_path);
+			*a->bf_comb = path_cpy(*tmp_1);
 		}
 		ft_lstdel(&a_lst, (void(*)(void*, size_t))del_ant);
 		cb_lst = cb_lst->next;
 	}
 }
 
-t_list	*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max)
+t_list		*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max)
 {
-	int	i;
-	int	tmp;
-	t_list	*bf_comb;
-	t_list	*cb_lst;
-	int	low;
+	int			i;
+	t_list		*bf_comb;
+	t_list		*cb_lst;
+	int			low;
+	t_bf_comb	a;
 
-	tmp = 0;
 	i = 1;
 	bf_comb = NULL;
 	low = MAX_INT;
+	a.cb_lst = NULL;
+	a.h_lst = h_lst;
+	a.low = &low;
+	a.nb_ant = nb_ant;
+	a.bf_comb = &bf_comb;
 	while (i <= max)
 	{
-		cb_lst = mk_comb(*ph_lst, i);
-		get_bf_comb(cb_lst, h_lst, nb_ant, &bf_comb, &low);
+		a.cb_lst = mk_comb(*ph_lst, i);
+		get_bf_comb(&a);
 		ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
 		i++;
 	}

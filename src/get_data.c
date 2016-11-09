@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_data.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/09 16:01:38 by jcazako           #+#    #+#             */
+/*   Updated: 2016/11/09 16:02:07 by jcazako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
-static void	init_var(t_data *data)
+static void		init_var(t_data *data)
 {
 	data->lst = NULL;
 	data->fd = 0;
@@ -22,7 +34,7 @@ static t_list	*print_error_2(t_list **lst, int i, char **av)
 	return (NULL);
 }
 
-t_list	*get_data(int ac, char **av, int *opt)
+t_list			*get_data(int ac, char **av, int *opt)
 {
 	t_data	d;
 

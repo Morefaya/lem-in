@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:47:44 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/12 18:16:20 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/09 16:53:47 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*get_antlst(int nb_ant, t_list *h_lst)
 {
-	int	i;
+	int		i;
 	t_ant	content;
 	t_list	*a_lst;
 	t_list	*tmp;

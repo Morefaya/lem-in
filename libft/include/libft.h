@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 18:27:44 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/06 20:32:41 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/09 15:58:21 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,5 @@ void				ft_lstdel_range(t_list **lst, int range, \
 		void(del)(void*, size_t));
 void				ft_lstadd_range(t_list **lst, t_list *nouvo, int range);
 void				ft_lstrev(t_list **lst);
-int				ft_maxint(const char *str);
+int					ft_maxint(const char *str);
 #endif

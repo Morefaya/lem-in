@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   path_finder.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/09 15:39:00 by jcazako           #+#    #+#             */
+/*   Updated: 2016/11/09 15:41:52 by jcazako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 static int	check_way(t_list *pipe, t_list *w_lst)
@@ -28,7 +40,6 @@ static void	add_way(t_list *h_lst, t_list **w_lst)
 		ft_lstadd_back(*w_lst, tmp);
 }
 
-
 static void	add_path(t_list **w_lst, t_list **ph_lst)
 {
 	t_list	*tmp;
@@ -48,7 +59,8 @@ void		path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst)
 	t_list	*xion;
 	t_list	*pipe;
 	t_list	*done;
-	int	cmd;
+	int		cmd;
+	int		len_w;
 
 	xion = ((t_hill*)(h_lst->content))->xion;
 	done = NULL;
@@ -67,5 +79,6 @@ void		path_finder(t_list *h_lst, t_list **w_lst, t_list **ph_lst)
 		xion = xion->next;
 	}
 	ft_lstdel(&done, (void(*)(void*, size_t))del_xion);
-	ft_lstdel_range(w_lst, ft_lstcount(*w_lst), (void(*)(void*, size_t))del_xion);
+	len_w = ft_lstcount(*w_lst);
+	ft_lstdel_range(w_lst, len_w, (void(*)(void*, size_t))del_xion);
 }

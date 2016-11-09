@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 19:17:19 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/10 19:17:21 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/09 15:59:49 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ordonne(char **line)
 	return (0);
 }
 
-int		ch_room_format(char *line)
+int			ch_room_format(char *line)
 {
 	int	ret;
 
