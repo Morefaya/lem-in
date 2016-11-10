@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:17:15 by jcazako           #+#    #+#             */
-/*   Updated: 2016/11/04 17:23:19 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 15:27:04 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	count_pipe(t_list *h_lst)
 {
 	t_list	*xion;
-	int	ret;
+	int		ret;
 
 	ret = 0;
 	xion = ((t_hill*)(h_lst->content))->xion;
@@ -80,7 +80,7 @@ static int	help_free(t_main *main, int ret)
 	return (ret);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_main	m;
 

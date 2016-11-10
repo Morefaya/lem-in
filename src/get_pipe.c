@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_pipe.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/10 15:21:10 by jcazako           #+#    #+#             */
+/*   Updated: 2016/11/10 15:21:18 by jcazako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 static int	get_name_1(char *line, t_pipe *pipe)
@@ -38,7 +50,7 @@ t_list		*get_pipe(char *line, t_list *r_lst)
 {
 	t_list	*p_lst;
 	t_pipe	content;
-	int	i;
+	int		i;
 
 	if (ch_pipe_format(line, r_lst))
 		return (NULL);

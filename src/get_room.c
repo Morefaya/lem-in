@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/09 20:00:17 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/10 18:40:21 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 15:23:13 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	get_name(char *line, t_room *room)
 	return (i + j);
 }
 
-static int	get_coord(char *line, t_room *room, int index)	
+static int	get_coord(char *line, t_room *room, int index)
 {
 	int		i;
 	int		j;
@@ -62,7 +62,6 @@ static int	get_coord(char *line, t_room *room, int index)
 	room->y = ft_atoi(line + i + j);
 	return (0);
 }
-
 
 t_list		*get_room(char *line, int cmd)
 {

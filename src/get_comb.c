@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_comb.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/10 15:20:44 by jcazako           #+#    #+#             */
+/*   Updated: 2016/11/10 15:20:57 by jcazako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
-int	init_1(t_get_comb *data, t_list *path, int nb)
+int		init_1(t_get_comb *data, t_list *path, int nb)
 {
 	if ((data->len = ft_lstcount(path)) < nb)
 		return (1);
@@ -17,7 +29,7 @@ void	init_2(t_get_comb *data)
 	data->j = 0;
 }
 
-int	add_comb(t_list *t_1, t_list **tmp_4)
+int		add_comb(t_list *t_1, t_list **tmp_4)
 {
 	t_xion	content;
 	t_list	*tmp;

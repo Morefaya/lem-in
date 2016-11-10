@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mk_comb.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/10 15:29:29 by jcazako           #+#    #+#             */
+/*   Updated: 2016/11/10 15:29:30 by jcazako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	add_shot(t_list **shot, t_list *cb_idx)
@@ -6,7 +18,7 @@ void	add_shot(t_list **shot, t_list *cb_idx)
 	t_list	*tmp_1;
 	t_list	*tmp_2;
 	t_xion	content;
-	
+
 	tmp_1 = ((t_xion*)(cb_idx->content))->pipe;
 	tmp_2 = ((t_xion*)(tmp_1->content))->pipe;
 	content.pipe = tmp_1;
@@ -15,7 +27,7 @@ void	add_shot(t_list **shot, t_list *cb_idx)
 	if (!*shot)
 		ft_lstadd(shot, tmp);
 	else
-		ft_lstadd_back(*shot, tmp);	
+		ft_lstadd_back(*shot, tmp);
 }
 
 void	rec_comb(t_list **shot, t_list **cb_lst)
@@ -47,7 +59,7 @@ void	jump(t_recu_comb data, t_list *tmp_1, int i)
 
 void	recu_comb(t_recu_comb data)
 {
-	int	i;
+	int		i;
 	t_list	*tmp_1;
 
 	if (!data.nb)

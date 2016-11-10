@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/11/09 16:09:08 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 16:25:42 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,15 @@ typedef struct		s_bf_comb
 	int				*low;
 }					t_bf_comb;
 
+typedef struct		s_d_move
+{
+	t_list			*ant;
+	t_list			*a_lst;
+	t_list			*path;
+	t_list			*end;
+	int				opt;
+}					t_d_move;
+
 typedef struct		s_main
 {
 	t_list			*line_lst;
@@ -174,6 +183,7 @@ t_list				*xion_cpy(t_list *xion);
 t_list				*mk_antseek_lst(t_list *a_lst);
 void				print_antseek(t_list *s_lst);
 int					solver(t_list **s, t_list **h, t_list **p, int o);
+int					deal_move(t_d_move a);
 t_list				*get_comb(t_list *path, int nb);
 void				print_comb(t_list *comb);
 void				del_path(t_xion *path, size_t size);
@@ -188,4 +198,5 @@ t_list				*get_data(int ac, char **av, int *opt);
 int					check_opt(char *str, int *opt);
 void				free_all(t_main *main);
 void				init_main(t_main *main);
+
 #endif

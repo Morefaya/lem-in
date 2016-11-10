@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 17:18:42 by jcazako           #+#    #+#             */
-/*   Updated: 2016/11/04 17:42:00 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 15:33:59 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	print_hill(t_list *hill)
 {
 	char	*str;
-	int	cmd;
-	t_list *tmp;
-	int	ant;
+	int		cmd;
+	t_list	*tmp;
+	int		ant;
 
 	while (hill)
 	{
@@ -28,17 +28,10 @@ void	print_hill(t_list *hill)
 			ant = ((t_ant*)(tmp->content))->nu;
 		else
 			ant = -1;
-		ft_printf("hill :%s\taddr :%p\tcmd :%d\t ant_addr :%p\tant :%d\n", str, hill, cmd, tmp, ant);
-		/*if (((t_hill*)(hill->content))->xion)
-		{
+		if (((t_hill*)(hill->content))->xion)
 			print_xion(((t_hill*)(hill->content))->xion);
-			ft_printf("\n");
-		}*/
-		/*if (((t_hill*)(hill->content))->a_lst)
-		{
+		if (((t_hill*)(hill->content))->a_lst)
 			print_ant(((t_hill*)(hill->content))->a_lst);
-			ft_printf("\n");
-		}*/
 		ft_printf("\n");
 		hill = hill->next;
 	}

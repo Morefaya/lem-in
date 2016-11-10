@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 18:31:05 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/12 19:22:35 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 15:25:08 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ static void		add_xion(t_list **h_lst, char *n)
 		ft_lstadd(&((t_hill*)((*h_lst)->content))->xion, tmp);
 	else
 		ft_lstadd_back(((t_hill*)((*h_lst)->content))->xion, tmp);
-	
 }
 
-static void	get_xion(t_list **h_lst, t_list *p_lst)
+static void		get_xion(t_list **h_lst, t_list *p_lst)
 {
 	char	*n;
 	char	*n_1;
@@ -65,7 +64,7 @@ static void	get_xion(t_list **h_lst, t_list *p_lst)
 	}
 }
 
-void		init_xion(t_list **h_lst, t_list *p_lst)
+void			init_xion(t_list **h_lst, t_list *p_lst)
 {
 	int	len;
 	int	i;

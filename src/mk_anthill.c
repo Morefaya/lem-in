@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 16:10:43 by jcazako           #+#    #+#             */
-/*   Updated: 2016/10/12 18:07:54 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 15:26:05 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static t_list	*get_hill(t_list *r_lst)
 t_list			*mk_anthill(t_list **r_lst)
 {
 	t_list	*ant_h;
-	
+
 	if (ch_start_end(*r_lst))
 		return (NULL);
 	turn_to_start(r_lst);
