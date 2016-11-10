@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 16:02:26 by jcazako           #+#    #+#             */
-/*   Updated: 2016/11/09 16:30:33 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 18:46:02 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_list		*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max)
 {
 	int			i;
 	t_list		*bf_comb;
-	t_list		*cb_lst;
 	int			low;
 	t_bf_comb	a;
 
@@ -55,7 +54,7 @@ t_list		*brute_fcomb(t_list **h_lst, t_list **ph_lst, int nb_ant, int max)
 	{
 		a.cb_lst = mk_comb(*ph_lst, i);
 		get_bf_comb(&a);
-		ft_lstdel(&cb_lst, (void(*)(void*, size_t))del_path);
+		ft_lstdel(&a.cb_lst, (void(*)(void*, size_t))del_path);
 		i++;
 	}
 	return (bf_comb);

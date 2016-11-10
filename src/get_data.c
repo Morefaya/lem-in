@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 16:01:38 by jcazako           #+#    #+#             */
-/*   Updated: 2016/11/09 16:02:07 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 18:06:04 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ t_list			*get_data(int ac, char **av, int *opt)
 			if (check_opt(av[d.i], opt))
 				return (print_error_1(&d.lst));
 		}
-		else if (d.i == ac && !d.cond)
-			get_anthill(0, &d.lst);
 		else
 		{
 			d.cond = 1;
@@ -60,5 +58,7 @@ t_list			*get_data(int ac, char **av, int *opt)
 		}
 		d.i++;
 	}
+	if (d.i && !d.cond)
+		get_anthill(0, &d.lst);
 	return (d.lst);
 }
