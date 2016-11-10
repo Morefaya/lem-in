@@ -6,7 +6,7 @@
 /*   By: jcazako <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 21:26:35 by jcazako           #+#    #+#             */
-/*   Updated: 2016/11/10 16:25:42 by jcazako          ###   ########.fr       */
+/*   Updated: 2016/11/10 20:45:24 by jcazako          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,5 +198,6 @@ t_list				*get_data(int ac, char **av, int *opt);
 int					check_opt(char *str, int *opt);
 void				free_all(t_main *main);
 void				init_main(t_main *main);
+int					get_max_queue(t_list *h_lst);
 
 #endif
